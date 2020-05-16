@@ -53,7 +53,9 @@ img {
 .btn.btn-social-icon {
      width: 30px;
      height: 30px;
-     padding: 0
+     padding: 0;
+    -webkit-appearance:none;
+    opactiy: 1
  }
 
  .template-demo>.btn {
