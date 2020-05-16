@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta content="" name="description">
+    <meta content="Kyran Adams" name="author">
+
+    <title>{{ page.title }}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="assets/css/modern-business.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/assets/files/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/assets/files/favicon-16x16.png" sizes="16x16" />
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 no-float bg-primary ">
+            {% include sidebar.html %}
+        </div>
+        <div class="col-md-9 no-float">
+            <div class="container">
+                <!-- Navigation -->
+                {% include navigation.html %}
+                <h1 class="my-4">{{ page.title }}</h1>
+
+                <p>{{ page.description }} </p>
+                <p>{{ page.current_position }}</p>
+
+                <!-- Portfolio Section -->
+                <h2>Here are a few of my works</h2>
+
+                <div class="row">
+                    {% for selected_title in page.selected_posts %}
+                    {% assign selected_post = site.posts | where: "title", selected_title %}
+                    {% assign selected_post = selected_post[0] %}
+                    <div class="col-lg-4 col-sm-6 portfolio-item">
+                        <div class="card h-100">
+                            <a href="{{selected_post.url}}"><img alt="" class="card-img-top"
+                                                                                       src="{{selected_post.preview_image}}"></a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a href="{{selected_post.url}}">{{selected_post.title}}</a>
+                                </h4>
+                                <p class="card-text">{{selected_post.excerpt}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <!-- /.row -->
+
+                <!-- Features Section -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h2>Career Interests</h2>
+                        <p></p>
+                        <p>My specific interests include:</p>
+                        <ul>
+                            {% for item in page.career_interests %}
+                                <li>{{item}}</li>
+                            {% endfor %}
+
+
+                        </ul>
+
+                    </div>
+                    <div class="col-lg-6">
+                        <img alt="" class="img-fluid rounded" href="https://www.kdnuggets.com/2017/08/first-steps-learning-deep-learning-image-classification-keras.html"
+                             src="/assets/files/ml_meme.png">
+                    </div>
+                </div>
+                <!-- /.row -->
+
+                <hr>
+
+                <!-- Call to Action Section -->
+                <div class="row mb-4">
+                    <div class="col-md-2">
+                        <p>Get in Touch!</p>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="btn btn-lg btn-secondary btn-block" href="mailto:kyran.park.adams@gmail.com">Email</a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="btn btn-lg btn-secondary btn-block" href="/assets/files/resume.pdf">Resume</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page Content -->
+
+<!-- /.container -->
+
+
+<!-- Footer -->
+{% include footer.html %}
+
+<!-- Bootstrap core JavaScript -->
+<script src="/assets/js/jquery/jquery.min.js"></script>
+<script src="/assets/js/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+
+    <title>Kyran Adams - Data Scientist</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/assets/css/modern-business.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/assets/files/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/assets/files/favicon-16x16.png" sizes="16x16" />
+</head>
+
+<body>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 no-float bg-primary">
+            {% include sidebar.html %}
+        </div>
+        <div class="col-md-9 no-float">
+            <div class="container">
+                <!-- Navigation -->
+                {% include navigation.html %}
+
+                <!-- Page Heading/Breadcrumbs -->
+                <h1 class="mt-4 mb-3">Skills
+                </h1>
+
+                {% for item in page.skills %}
+                    <h2 class="h2"><small>{{item[0] | capitalize}}</small></h2>
+                    <ul>
+                     {% for name in item[1] %}
+                        <li>
+                            <div id="popover_content_wrapper_{{name}}" style="display: none;">
+                                {% assign j = 0 %}
+                                {% for post in site.posts %}
+                                    {% if post.tags contains name %}
+                                        <p><a href="{{post.url}}">{{post.title}}</a></p>
+                                        <img alt="" class="img-fluid rounded" src="{{ post.preview_image }}">
+                                        <hr>
+                                        {% assign j = j | plus: 1 %}
+                                    {% endif %}
+                                {% endfor %}
+                                {% if j == 0 %}
+                                <p>None found!</p>
+                                {% endif %}
+                            </div>
+
+                            <a id='popover-{{name}}' data-placement='right' title="Projects using {{name}}" data-trigger="focus" href='#'>{{name}}  [{{j}} posts]</a>
+                        </li>
+                     {% endfor %}
+                    </ul>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+{% include footer.html %}
+
+<!-- Bootstrap core JavaScript -->
+<script src="/assets/js/jquery/jquery.min.js"></script>
+<script src="/assets/js/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script>
+jQuery(document).ready(function() {
+    {% for item in page.skills %}
+         {% for name in item[1] %}
+           $('#popover-{{name}}').popover({
+                html : true,
+                content: function() {
+                  return $('#popover_content_wrapper_{{name}}').html();
+                }
+              });
+
+          {% endfor %}
+    {% endfor %}
+
+ });
+</script>
+
+</body>
+
+</html>

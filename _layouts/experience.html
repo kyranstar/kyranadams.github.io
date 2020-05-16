@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+
+    <title>Modern Business - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/assets/css/modern-business.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/assets/files/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/assets/files/favicon-16x16.png" sizes="16x16" />
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 no-float bg-primary">
+            {% include sidebar.html %}
+        </div>
+        <div class="col-md-9 no-float">
+            <div class="container">
+                <!-- Navigation -->
+                {% include navigation.html %}
+
+                <ul class="timeline">
+
+                    {% assign experiences_sorted = site.experiences | sort: 'start_date' | reverse %}
+                    {% for experience in experiences_sorted %}
+                        <li>
+                            <a target="_blank" href="{{ experience.link }}">{{ experience.title }}</a>
+                            {% if experience.end_date %}
+                            <a href="{{ experience.link }}" class="float-right">{{ experience.start_date | date: "%m/%d/%Y"}} - {{experience.end_date | date: "%m/%d/%Y"}}</a>
+                            {% else %}
+                            <a href="{{ experience.link }}" class="float-right">{{ experience.start_date | date: "%m/%d/%Y"}} - Present</a>
+                            {% endif %}
+                            <p>{{experience.content | markdownify}}</p>
+                        </li>
+                    {% endfor %}
+			    </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+
+{% include footer.html %}
+<!-- Bootstrap core JavaScript -->
+<script src="/assets/js/jquery/jquery.min.js"></script>
+<script src="/assets/js/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
