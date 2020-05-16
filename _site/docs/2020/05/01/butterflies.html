@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta content="" name="description">
+    <meta content="" name="author">
+
+    <title>Kyran Adams - Data Scientist</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/assets/css/modern-business.css" rel="stylesheet">
+    <link href="/assets/css/blog_post.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/assets/files/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/assets/files/favicon-16x16.png" sizes="16x16" />
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 no-float bg-primary">
+            <div class="container-fluid text-white">
+
+    <!--Grid row-->
+    <div class="row text-center justify-content-md-center">
+
+        <!--Grid column-->
+        <div class="col-md-10 my-4">
+
+            <img alt="100x100" class="rounded-circle z-depth-2 img-responsive img-thumbnail"
+                 data-holder-rendered="true"
+                 src="/assets/files/profile.jpg">
+            <!-- No Shadow <img class="rounded-circle" alt="100x100" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg"
+            data-holder-rendered="true">  -->
+            <h1 id="nameTitle" class="mt-5 h1">Kyran Adams</h1>
+            <h4 class="mb-3 h4">Data Scientist</h4>
+
+
+        </div>
+        <!--Grid column-->
+
+    </div>
+    <div class="row text-center justify-content-md-center">
+
+        <!--Grid column-->
+        <div class="col-md-12 mb-5">
+            <a class="btn btn-light" href="mailto:kyran.park.adams@gmail.com" type="button">Contact Me</a>
+            <a class="btn btn-light" href="/assets/files/resume.pdf" type="button">Resume</a>
+        </div>
+        <!--Grid column-->
+
+    </div>
+
+</div>
+<div class="container-fluid text-white social-media-buttons">
+    <!--Grid row-->
+    <div class="row">
+
+        <!--Grid column-->
+        <div class="col-md-12">
+            <div class="text-center mb-5">
+                <a type="button" class="btn btn-social-icon btn-twitter btn-rounded" href="https://twitter.com/Kyran_Adams"><i class="fa fa-twitter"></i></a>
+                <a type="button" class="btn btn-social-icon btn-linkedin btn-rounded" href="http://linkedin.com/in/kyranadams"><i class="fa fa-linkedin"></i></a>
+                <a type="button" class="btn btn-social-icon btn-instagram btn-rounded" href="https://www.instagram.com/kpa.pa/"><i class="fa fa-instagram"></i></a>
+                <a type="button" class="btn btn-social-icon btn-instagram btn-rounded" href="http://github.com/kyranstar"><i class="fa fa-github"></i></a>
+                <a type="button" class="btn btn-social-icon btn-instagram btn-rounded" href="mailto:kyran.park.adams@gmail.com"><i class="fa fa-envelope"></i></a>
+            </div>
+        </div>
+        <!--Grid column-->
+    </div>
+</div>
+
+
+
+        </div>
+        <div class="col-md-9 no-float">
+            <div class="container">
+                <!-- Navigation -->
+                <nav class="navbar navbar-dark ml-auto nav-fill ">
+<ul class="nav ">
+    
+        <li class="nav-item">
+            <a class="nav-link" href="/">home</a>
+        </li>
+    
+        <li class="nav-item">
+            <a class="nav-link" href="/experience.html">experience</a>
+        </li>
+    
+        <li class="nav-item">
+            <a class="nav-link" href="/skills.html">skills</a>
+        </li>
+    
+        <li class="nav-item">
+            <a class="nav-link" href="/works.html">works</a>
+        </li>
+    
+        <li class="nav-item">
+            <a class="nav-link" href="/art.html">art</a>
+        </li>
+    
+</ul>
+</nav>
+
+
+                <div class="row">
+
+                    <!-- Post Content Column -->
+                    <div class="col-lg-8">
+
+                        <!-- Preview Image -->
+                        <img alt="" class="img-fluid rounded" src="/assets/files/butterfly_gif.gif">
+
+                        <hr>
+
+                        <!-- Date/Time -->
+                        <p>Posted on May 1, 2020</p>
+
+                        <hr>
+
+                        <!-- Post Content -->
+                        <p>Training a generative adversarial neural network to generate brand new butterflies. 
+Inspired by <a href="https://www.cunicode.com/works/confusing-coleopterists&quot;">this beetle generator by cunicode.</a></p>
+
+<h2 id="the-data">The Data</h2>
+<p>The training set consisted of ~1800 butterfly illustrations scraped using opencv from lithographs in 
+<a href="&quot;https://archive.org/details/biologiacentrali41godmrich/page/n3&quot;">Biologia Centrali-Americana</a>, an encyclopedia of central American wildlife published at the end of the 19th century.</p>
+
+<p><img align="right" alt="" class="img-fluid rounded" src="/assets/files/butterfly_grid.webp" /></p>
+
+<p>After discovering the aforementioned beetle GAN, I was inspired to write my own scripts to
+                            collect the data, which was difficult because of how the butterflies were interlocked in the
+                            encyclopaedia pages.</p>
+
+<p>I ended up thresholding each image and then finding bounding rectangles of contours, which
+                            could be used to crop out the butterflies. I felt that I had enough datapoints, so I just
+                            removed the small number of butterflies that were oriented diagonally or had other
+                            artifacts.</p>
+
+<h2 id="training">Training</h2>
+
+<p>I trained the model using RunwayML, which was a little confusing to use at first but super
+                            easy after I understood how it worked, and also pretty cheap. I paid their $10 monthly
+                            membership fee and then got the first model training free.</p>
+
+<p><img align="left" alt="" class="img-fluid rounded" src="/assets/files/butterfly_allsizes.webp" width="400px" /></p>
+
+<p>After completing this project, I was honestly really happy with the results! The GAN seemed
+                            to have almost the same diversity as the dataset and for most images produced beautiful
+                            results.</p>
+
+<p><img align="right" alt="" class="img-fluid rounded" src="/assets/files/butterfly_single2.webp" /></p>
+
+<p>One thing I noticed was that certain images produced were blurry. I originally thought that
+                            this was a failure of the training process, but I then realized that this was actually a
+                            result of the training data — many of the images were smaller in the book, so when blown up
+                            to 1024x1024, they became very blurry.</p>
+
+<p>It’s interesting because there is a subtle bias towards which butterflies were smaller in the
+                            book. My conjecture is that colorless and drab butterflies, like the one in the bottom left
+                            corner in the image above, were probably considered more boring and seem to have been
+                            reproduced smaller in the encyclopedia. This made the GAN create blurry reproductions of
+                            these and sharp reproductions of the colorful and beautiful butterflies. Not the end of the
+                            world!</p>
+
+<p>I produced all of the images and animations in this blog post using Google Colab.</p>
+
+<p>The model is avaiable <a href="&quot;https://open-app.runwayml.com/?model=kyranstar/ButterflyBreeder&quot;">here</a> for you to try out.&lt;/a&gt; I might create a few more models from these
+                            encyclopedia volumes, so make sure to look out on my instagram <a href="&quot;https://www.instagram.com/kpa.pa/&quot;">@kpa.pa</a>!</p>
+
+<p><img align="center" alt="" class="img-fluid rounded" src="/assets/files/butterfly_single.webp" /></p>
+
+
+                        <!-- Sidebar Widgets Column -->
+                        <div class="col-md-4">
+
+                            <!-- Search Widget -->
+                            <div class="card mb-4">
+                                <h5 class="card-header">Search</h5>
+                                <div class="card-body">
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="Search for..." type="text">
+                                        <span class="input-group-btn">
+                <button class="btn btn-secondary" type="button">Go!</button>
+              </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Categories Widget -->
+                            <div class="card my-4">
+                                <h5 class="card-header">Categories</h5>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <ul class="list-unstyled mb-0">
+                                                <li>
+                                                    <a href="#">Web Design</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">HTML</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Freebies</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <ul class="list-unstyled mb-0">
+                                                <li>
+                                                    <a href="#">JavaScript</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">CSS</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Tutorials</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Side Widget -->
+                            <div class="card my-4">
+                                <h5 class="card-header">Side Widget</h5>
+                                <div class="card-body">
+                                    You can put anything you want inside of these side widgets. They are easy to use,
+                                    and
+                                    feature the new Bootstrap 4 card containers!
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- /.row -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Kyran Adams 2020. Made with ❤️by Kyran Adams. Email:
+            <a href="mailto:kyran.park.adams@gmail.com">kyran.park.adams@gmail.com</a></p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/assets/js/jquery/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+
+</html>

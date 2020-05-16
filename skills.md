@@ -6,14 +6,21 @@ skills:
         - Python
         - R
         - Java
+        - C#
     Data Science:
         - Tensorflow
         - Pandas
-        - 
-    front end:
-        - Javascript
-        - HTML
+        - PyTorch
+        - Data Cleaning
+    Data Visualization:
         - D3.js
+    front end:
+        - JS
+        - HTML
+        - CSS
+        - Bootstrap
+    soft skills:
+        - Leadership
 ---
 
 
