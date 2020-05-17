@@ -1,5 +1,6 @@
 ---
 title: Software Intern at McNair Center for Entrepreneurship and Innovation
+link: "https://www.bakerinstitute.org/mcnair-center/"
 start_date: 2017-10-01
 end_date: 2018-05-01
 ---

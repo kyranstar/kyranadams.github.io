@@ -7,7 +7,6 @@ tags: [Golang, Graphics]
 ---
 As another project from my senior year of high school, I decided to write a monte-carlo unidrectional path tracer in Golang. 
 
-
 It features: 
  - Multicore CPU based stochastic unidirectional path tracer  
  - Loading OBJ files  
