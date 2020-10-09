@@ -1,4 +1,5 @@
-url: "http://kyranadams.com" # the base hostname & protocol for your site, e.g. http://example.com
+#url: "http://kyranadams.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "http://localhost:4000" 
 baseurl: "" # the subpath of your site, e.g. /blog
 title: "Kyran Adams - Data Scientist" # the name of your site, e.g. ACME Corp.
 
