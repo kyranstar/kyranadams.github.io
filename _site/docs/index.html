@@ -14,10 +14,13 @@
     <link href="/assets/js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
     <!-- Custom styles for this template -->
     <link href="/assets/css/modern-business.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="/assets/files/favicon-32x32.png" sizes="32x32" />
     <link rel="icon" type="image/png" href="/assets/files/favicon-16x16.png" sizes="16x16" />
+
+	<script src="assets/js/jquery/jquery.min.js" type="text/javascript"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-166923248-1"></script>
@@ -30,69 +33,167 @@
     </script>
 </head>
 
+
 <body>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-2 no-float bg-primary ">
-            <div class="container-fluid text-white">
-
-    <!--Grid row-->
-    <div class="row text-center justify-content-md-center">
-
-        <!--Grid column-->
-        <div class="col-md-10 my-4">
-
-            <img alt="100x100" class="rounded-circle z-depth-2 img-responsive img-thumbnail"
-                 data-holder-rendered="true"
-                 src="/assets/files/profile.jpg">
-            <!-- No Shadow <img class="rounded-circle" alt="100x100" src="https://mdbootstrap.com/img/Photos/Avatars/img%20(30).jpg"
-            data-holder-rendered="true">  -->
-            <h1 id="nameTitle" class="mt-5 h1">Kyran Adams</h1>
-            <h4 class="mb-3 h4">Data Scientist</h4>
-
-
-        </div>
-        <!--Grid column-->
-
-    </div>
-    <div class="row text-center justify-content-md-around">
-
-        <!--Grid column-->
-        <div class="col-md-12">
-            <a class="btn btn-outline-light" href="mailto:kyran.park.adams@gmail.com" type="button">Contact</a>
-			<a class="btn btn-outline-light" href="/assets/files/resume.pdf" type="button">Resume</a>
-        </div>
-        <!--Grid column-->
 		
-    </div>
+		<div class="col-md-12 no-float">
+			<style>
+/* Header Parallax Element Style*/ 
+.parallax-foreground {
+	position:absolute; 
+	top: 0;
+	left: 0;
+	z-index: 3;
+}
+.parallax-background {
+	left: 0;
+	z-index: 1;
+}
+.parallax {
+	position: fixed;
+	top: 40px;
+	z-index: 2;
+	left: 50%;
+}
+#nametitle {
+	position: absolute;
+	color: white;
+	font-family: 'Helvetica Neue', sans-serif; font-size: 100px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
+	z-index: 4;
+	transform: translate(-50%, 0%);
+}
+</style>
 
-</div>
-<div class="container-fluid text-white social-media-buttons mt-4">
-    <!--Grid row-->
-    <div class="row">
 
-        <!--Grid column-->
-        <div class="col-md-12">
-            <div class="text-center mb-5">
-                <a type="button" class="btn btn-social-icon btn-twitter btn-rounded" href="https://twitter.com/Kyran_Adams"><i class="fa fa-twitter"></i></a>
-                <a type="button" class="btn btn-social-icon btn-linkedin btn-rounded" href="http://linkedin.com/in/kyranadams"><i class="fa fa-linkedin"></i></a>
-                <a type="button" class="btn btn-social-icon btn-instagram btn-rounded" href="https://www.instagram.com/kpa.pa/"><i class="fa fa-instagram"></i></a>
-                <a type="button" class="btn btn-social-icon btn-instagram btn-rounded" href="http://github.com/kyranstar"><i class="fa fa-github"></i></a>
-                <a type="button" class="btn btn-social-icon btn-instagram btn-rounded" href="mailto:kyran.park.adams@gmail.com"><i class="fa fa-envelope"></i></a>
-            </div>
-        </div>
-        <!--Grid column-->
-    </div>
-</div>
+<!-- First Parallax Section -->
+<img alt="100x100" class="z-depth-3 img-responsive parallax-foreground"
+                 data-holder-rendered="true"
+                 src="/assets/files/silhouette.png">
+<img alt="100x100" id="mountains" class="z-depth-1 img-responsive parallax-background"
+                 data-holder-rendered="true"
+                 src="/assets/files/parallax_background.png">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="sun" class="parallax">
+     <circle id="suncircle" cx = "150" cy = "75" r = "75" fill = "orange"/>
+</svg>
+
+<h1 id="nametitle">
+kyran adams.
+</h1>
 
 
+				 
+<script> 
+function hex (c) {
+  var s = "0123456789abcdef";
+  var i = parseInt (c);
+  if (i == 0 || isNaN (c))
+    return "00";
+  i = Math.round (Math.min (Math.max (0, i), 255));
+  return s.charAt ((i - i % 16) / 16) + s.charAt (i % 16);
+}
 
-        </div>
-        <div class="col-md-10 no-float">
-            <div class="container">
-                <!-- Navigation -->
-                <nav class="navbar navbar-dark ml-auto nav-fill ">
+/* Convert an RGB triplet to a hex string */
+function convertToHex (rgb) {
+  return '#' + hex(rgb[0]) + hex(rgb[1]) + hex(rgb[2]);
+}
+
+/* Remove '#' in color hex string */
+function trim (s) { return (s.charAt(0) == '#') ? s.substring(1, 7) : s }
+
+/* Convert a hex string to an RGB triplet */
+function convertToRGB (hex) {
+  var color = [];
+  color[0] = parseInt ((trim(hex)).substring (0, 2), 16);
+  color[1] = parseInt ((trim(hex)).substring (2, 4), 16);
+  color[2] = parseInt ((trim(hex)).substring (4, 6), 16);
+  return color;
+}
+
+function generateColor(colorStart,colorEnd,colorCount){
+
+	// The beginning of your gradient
+	var start = convertToRGB (colorStart);    
+
+	// The end of your gradient
+	var end   = convertToRGB (colorEnd);    
+
+	// The number of colors to compute
+	var len = colorCount;
+
+	//Alpha blending amount
+	var alpha = 0.0;
+
+	var saida = [];
+	
+	for (i = 0; i < len; i++) {
+		var c = [];
+		alpha += (1.0/len);
+		
+		c[0] = start[0] * alpha + (1 - alpha) * end[0];
+		c[1] = start[1] * alpha + (1 - alpha) * end[1];
+		c[2] = start[2] * alpha + (1 - alpha) * end[2];
+
+		saida.push(convertToHex (c));
+		
+	}
+	
+	return saida;
+	
+}
+
+
+$(window).on('load', function() {
+	var titleheight = $(window).width()/20;
+	$('#nametitle').css({
+		top: $('#mountains').offset().top + $('#mountains').height() - titleheight,
+		left: "50%", 
+		fontSize: titleheight
+	})
+});
+
+$('#suncircle').attr('r', $(window).width()/24)
+$('#suncircle').attr('cy', $(window).width()/24)
+$('#suncircle').attr('cx', $(window).width()/9)
+var sunGradient = generateColor('#7A2C3F','#FF7451',20);
+
+
+$.fn.followTo = function (target) {
+    var $this = this,
+        $window = $(window);
+	var sun = $('#suncircle')[0];
+
+    $window.scroll(function (e) {
+		var pos = $(target).offset().top + $(target).height() - sun.r.animVal.value*2;
+		
+		var colInd = Math.floor(sunGradient.length * ($window.scrollTop() / pos));
+		if (!isFinite(colInd)){
+			colInd = 0;
+		}
+		var fillCol = sunGradient[colInd];
+		var yDist = 40
+		
+        if ($window.scrollTop() + yDist > pos) {
+            $this.css({
+                position: 'absolute',
+                top: pos
+            });
+        } else {
+            $this.css({
+                position: 'fixed',
+                top: yDist
+            });
+        }
+		$('#suncircle').css({fill: fillCol})
+    });
+};
+
+$('#sun').followTo('#mountains');
+
+</script>
+			<nav class="navbar navbar-dark ml-auto nav-fill justify-content-around mt-4">
 <ul class="nav ">
     
         <li class="nav-item">
@@ -118,10 +219,13 @@
 </ul>
 </nav>
 
-                <h1 class="my-4">Kyran Adams - Data Scientist</h1>
+            <div class="container">
+                <!-- Navigation -->
+                <h1 class="my-4">Software Engineer at Coinbase - Machine Learning, Data Science, Backend</h1>
 
                 <p>I'm a Senior at Rice University studying computer science and data science. I have interned with the McNair Center to apply machine learning to economics research, done research on extensions of abstract interpretation at Rice Intelligent Software Systems Lab, and worked with engineers at Aerojet Rocketdyne to produce a liquid fueled rocket. When I'm not working, I enjoy playing Chopin on the piano, tinkering with algorithmic art, or expanding my list of coffeeshop ratings. </p>
-                <p>I am currently interning at Coinbase on the Machine Learning team.</p>
+                <p>I am starting at Coinbase next year on the Machine Learning team.</p>
+
 
                 <!-- Portfolio Section -->
                 <h2>Here are a few of my works</h2>

@@ -4,82 +4,79 @@
 <body>
 
 <div class="container-fluid">
-    <div class="row">
-		
-		<div class="col-md-12 no-float">
-			{% include header.html %}
-			{% include navigation.html %}
-            <div class="container">
-                <!-- Navigation -->
-                <h1 class="my-4">{{ page.title }}</h1>
+	{% include header.html %}
+	<div class="col-md-12 no-float">
+		{% include navigation.html %}
+		<div class="container">
+			<!-- Navigation -->
+			<h1 class="my-4">{{ page.title }}</h1>
 
-                <p>{{ page.description }} </p>
-                <p>{{ page.current_position }}</p>
+			<p>{{ page.description }} </p>
+			<p>{{ page.current_position }}</p>
 
 
-                <!-- Portfolio Section -->
-                <h2>Here are a few of my works</h2>
+			<!-- Portfolio Section -->
+			<h2>Here are a few of my works</h2>
 
-                <div class="row">
-                    {% for selected_title in page.selected_posts %}
-                    {% assign selected_post = site.posts | where: "title", selected_title %}
-                    {% assign selected_post = selected_post[0] %}
-                    <div class="col-lg-4 col-sm-6 portfolio-item">
-                        <div class="card h-100">
-                            <a href="{{selected_post.url}}"><img alt="" class="card-img-top"
-                                                                                       src="{{selected_post.preview_image}}"></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="{{selected_post.url}}">{{selected_post.title}}</a>
-                                </h4>
-                                <p class="card-text">{{selected_post.excerpt}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    {% endfor %}
-                </div>
-                <!-- /.row -->
+			<div class="row">
+				{% for selected_title in page.selected_posts %}
+				{% assign selected_post = site.posts | where: "title", selected_title %}
+				{% assign selected_post = selected_post[0] %}
+				<div class="col-lg-4 col-sm-6 portfolio-item">
+					<div class="card h-100">
+						<a href="{{selected_post.url}}"><img alt="" class="card-img-top"
+																				   src="{{selected_post.preview_image}}"></a>
+						<div class="card-body">
+							<h4 class="card-title">
+								<a href="{{selected_post.url}}">{{selected_post.title}}</a>
+							</h4>
+							<p class="card-text">{{selected_post.excerpt}}</p>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			<!-- /.row -->
 
-                <!-- Features Section -->
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h2>Career Interests</h2>
-                        <p></p>
-                        <p>My specific interests include:</p>
-                        <ul>
-                            {% for item in page.career_interests %}
-                                <li>{{item}}</li>
-                            {% endfor %}
+			<!-- Features Section -->
+			<div class="row">
+				<div class="col-lg-6">
+					<h2>Career Interests</h2>
+					<p></p>
+					<p>My specific interests include:</p>
+					<ul>
+						{% for item in page.career_interests %}
+							<li>{{item}}</li>
+						{% endfor %}
 
 
-                        </ul>
+					</ul>
 
-                    </div>
-                    <div class="col-lg-6">
-                        <img alt="" class="img-fluid rounded" href="https://www.kdnuggets.com/2017/08/first-steps-learning-deep-learning-image-classification-keras.html"
-                             src="/assets/files/ml_meme.png">
-                    </div>
-                </div>
-                <!-- /.row -->
+				</div>
+				<div class="col-lg-6">
+					<img alt="" class="img-fluid rounded" href="https://www.kdnuggets.com/2017/08/first-steps-learning-deep-learning-image-classification-keras.html"
+						 src="/assets/files/ml_meme.png">
+				</div>
+			</div>
+			<!-- /.row -->
 
-                <hr>
+			<hr>
 
-                <!-- Call to Action Section -->
-                <div class="row mb-4">
-                    <div class="col-md-2">
-                        <p>Get in Touch!</p>
-                    </div>
-                    <div class="col-md-4">
-                        <a class="btn btn-lg btn-secondary btn-block" href="mailto:kyran.park.adams@gmail.com">Email</a>
-                    </div>
-                    <div class="col-md-4">
-                        <a class="btn btn-lg btn-secondary btn-block" href="/assets/files/resume.pdf">Resume</a>
-                    </div>
-                </div>
+			<!-- Call to Action Section -->
+			<div class="row mb-4">
+				<div class="col-md-2">
+					<p>Get in Touch!</p>
+				</div>
+				<div class="col-md-4">
+					<a class="btn btn-lg btn-secondary btn-block" href="mailto:kyran.park.adams@gmail.com">Email</a>
+				</div>
+				<div class="col-md-4">
+					<a class="btn btn-lg btn-secondary btn-block" href="/assets/files/resume.pdf">Resume</a>
+				</div>
+			</div>
 
-            </div>
-        </div>
-    </div>
+		</div>
+	</div>    
 </div>
 
 <!-- Page Content -->

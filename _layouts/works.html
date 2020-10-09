@@ -2,54 +2,49 @@
 
 <body>
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-2 no-float bg-primary">
-            {% include sidebar.html %}
-        </div>
-        <div class="col-md-10 no-float">
-            <div class="container">
-                <!-- Navigation -->
-                {% include navigation.html %}
+	{% include header.html %}
+	<div class="col-md-12 no-float">
+		{% include navigation.html %}
+		<div class="container">
 
-                <!-- Page Heading/Breadcrumbs -->
-                <h1 class="mt-4 mb-3">My Works
-                </h1>
-                {% assign posts_sorted = site.posts | sort: 'date' | reverse %}
-                {% assign total_pages =  site.posts.size  | times: 1.0 | divided_by: page.works_per_page | ceil%}
-                {% for i in (0..total_pages) %}
-                    {% assign num_posts_done = i | times: page.works_per_page %}
-                    {% assign num_posts_this_page =  site.posts.size | minus: num_posts_done | at_most: page.works_per_page %}
-                    <div class="jumbotron page" id="page{{ i | plus: 1}}">
-                        <div class="row">
-                            {% for j in (1..num_posts_this_page) %}
-                                {% assign ind = num_posts_done | plus: j | minus: 1 %}
-                                <div class="col-lg-{{ page.columns_per_work }} portfolio-item">
-                                    <div class="card h-100">
-                                        <a href="{{posts_sorted[ind].url}}"><img alt="" class="card-img-top" src="{{posts_sorted[ind].preview_image}}"></a>
-                                        <div class="card-body">
-                                            <h4 class="card-title">
-                                                <a href="{{posts_sorted[ind].url}}">{{posts_sorted[ind].title}}</a>
-                                            </h4>
-                                            <p><small>
-                                                {% for tag in posts_sorted[ind].tags %}
-                                                #{{tag}}
-                                                {% endfor %}
-                                            </small></p>
-                                            <p class="card-text">{{ posts_sorted[ind].excerpt }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                {% endfor %}
-                <nav aria-label="Page navigation example">
-                <ul id="pagination-demo" class="pagination justify-content-center"></ul>
-                </nav>
+			<!-- Page Heading/Breadcrumbs -->
+			<h1 class="mt-4 mb-3">My Works
+			</h1>
+			{% assign posts_sorted = site.posts | sort: 'date' | reverse %}
+			{% assign total_pages =  site.posts.size  | times: 1.0 | divided_by: page.works_per_page | ceil%}
+			{% for i in (0..total_pages) %}
+				{% assign num_posts_done = i | times: page.works_per_page %}
+				{% assign num_posts_this_page =  site.posts.size | minus: num_posts_done | at_most: page.works_per_page %}
+				<div class="jumbotron page" id="page{{ i | plus: 1}}">
+					<div class="row">
+						{% for j in (1..num_posts_this_page) %}
+							{% assign ind = num_posts_done | plus: j | minus: 1 %}
+							<div class="col-lg-{{ page.columns_per_work }} portfolio-item">
+								<div class="card h-100">
+									<a href="{{posts_sorted[ind].url}}"><img alt="" class="card-img-top" src="{{posts_sorted[ind].preview_image}}"></a>
+									<div class="card-body">
+										<h4 class="card-title">
+											<a href="{{posts_sorted[ind].url}}">{{posts_sorted[ind].title}}</a>
+										</h4>
+										<p><small>
+											{% for tag in posts_sorted[ind].tags %}
+											#{{tag}}
+											{% endfor %}
+										</small></p>
+										<p class="card-text">{{ posts_sorted[ind].excerpt }}</p>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			{% endfor %}
+			<nav aria-label="Page navigation example">
+			<ul id="pagination-demo" class="pagination justify-content-center"></ul>
+			</nav>
 
-            </div>
-        </div>
-    </div>
+		</div>
+	</div>
 </div>
 
 <!-- Footer -->

@@ -37,24 +37,25 @@
 <body>
 
 <div class="container-fluid">
-    <div class="row">
-		
-		<div class="col-md-12 no-float">
-			<style>
+	<style>
 /* Header Parallax Element Style*/ 
 .parallax-foreground {
 	position:absolute; 
 	top: 0;
 	left: 0;
 	z-index: 3;
+	min-width: 100%;
+	max-height: 100vh;
 }
 .parallax-background {
 	left: 0;
 	z-index: 1;
+	min-width: 100%;
+	max-height: 100vh;
 }
 .parallax {
 	position: fixed;
-	top: 40px;
+	top: 120px;
 	z-index: 2;
 	left: 50%;
 }
@@ -65,14 +66,75 @@
 	z-index: 4;
 	transform: translate(-50%, 0%);
 }
+#namesubtitle {
+	position: absolute;
+	color: white;
+	font-family: 'Helvetica Neue', sans-serif; font-size: 60px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
+	z-index: 4;
+	transform: translate(-50%, 0%);
+}
+
+.arrow {
+    opacity: 0;
+    position: absolute;
+        left: 50%;
+        top: 95%;
+    transform-origin: 50% 50%;
+    transform: translate3d(-50%, -50%, 0);
+	z-index: 5;
+}
+
+.arrow-first {
+    animation: arrow-movement 2s ease-in-out infinite;
+}
+.arrow-second {
+    animation: arrow-movement 2s 1s ease-in-out infinite;
+}
+
+.arrow:before,
+.arrow:after {
+    background: #fff;
+    content: '';
+    display: block;
+    height: 3px; 
+    position: absolute;
+        top: 0;
+        left: 0;
+    width: 30px;
+}
+
+.arrow:before {
+    transform: rotate(45deg) translateX(-23%);
+    transform-origin: top left;
+}
+
+.arrow:after {
+    transform: rotate(-45deg) translateX(23%);
+    transform-origin: top right;
+}
+
+@keyframes arrow-movement {
+    0% { 
+        opacity: 0;
+        top: 90%;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% { 
+        opacity: 0;
+    }
+}
+
+
 </style>
 
 
 <!-- First Parallax Section -->
-<img alt="100x100" class="z-depth-3 img-responsive parallax-foreground"
+<img alt="100x100" class="img-responsive parallax-foreground"
                  data-holder-rendered="true"
                  src="/assets/files/silhouette.png">
-<img alt="100x100" id="mountains" class="z-depth-1 img-responsive parallax-background"
+<img alt="100x100" id="mountains" class="img-responsive parallax-background"
                  data-holder-rendered="true"
                  src="/assets/files/parallax_background.png">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="sun" class="parallax">
@@ -82,6 +144,8 @@
 <h1 id="nametitle">
 kyran adams.
 </h1>
+<div class="arrow arrow-first d-none d-md-block"></div>
+<div class="arrow arrow-second d-none d-md-block"></div>
 
 
 				 
@@ -148,16 +212,18 @@ function generateColor(colorStart,colorEnd,colorCount){
 $(window).on('load', function() {
 	var titleheight = $(window).width()/20;
 	$('#nametitle').css({
-		top: $('#mountains').offset().top + $('#mountains').height() - titleheight,
+		//top: $('#mountains').offset().top + $('#mountains').height() - titleheight - 10,
+		top: $('#mountains').offset().top + 10,
 		left: "50%", 
 		fontSize: titleheight
 	})
 });
 
+var sunGradient = generateColor('#7A2C3F','#FF7451',20);
 $('#suncircle').attr('r', $(window).width()/24)
 $('#suncircle').attr('cy', $(window).width()/24)
 $('#suncircle').attr('cx', $(window).width()/9)
-var sunGradient = generateColor('#7A2C3F','#FF7451',20);
+$('#suncircle').css({fill: sunGradient[0]})
 
 
 $.fn.followTo = function (target) {
@@ -173,7 +239,7 @@ $.fn.followTo = function (target) {
 			colInd = 0;
 		}
 		var fillCol = sunGradient[colInd];
-		var yDist = 40
+		var yDist = 120
 		
         if ($window.scrollTop() + yDist > pos) {
             $this.css({
@@ -193,7 +259,8 @@ $.fn.followTo = function (target) {
 $('#sun').followTo('#mountains');
 
 </script>
-			<nav class="navbar navbar-dark ml-auto nav-fill justify-content-around mt-4">
+	<div class="col-md-12 no-float">
+		<nav class="navbar navbar-dark ml-auto nav-fill justify-content-around mt-4">
 <ul class="nav ">
     
         <li class="nav-item">
@@ -219,115 +286,114 @@ $('#sun').followTo('#mountains');
 </ul>
 </nav>
 
-            <div class="container">
-                <!-- Navigation -->
-                <h1 class="my-4">Software Engineer at Coinbase - Machine Learning, Data Science, Backend</h1>
+		<div class="container">
+			<!-- Navigation -->
+			<h1 class="my-4">Software Engineer at Coinbase - Machine Learning, Data Science, Backend</h1>
 
-                <p>I'm a Senior at Rice University studying computer science and data science. I have interned with the McNair Center to apply machine learning to economics research, done research on extensions of abstract interpretation at Rice Intelligent Software Systems Lab, and worked with engineers at Aerojet Rocketdyne to produce a liquid fueled rocket. When I'm not working, I enjoy playing Chopin on the piano, tinkering with algorithmic art, or expanding my list of coffeeshop ratings. </p>
-                <p>I am starting at Coinbase next year on the Machine Learning team.</p>
-
-
-                <!-- Portfolio Section -->
-                <h2>Here are a few of my works</h2>
-
-                <div class="row">
-                    
-                    
-                    
-                    <div class="col-lg-4 col-sm-6 portfolio-item">
-                        <div class="card h-100">
-                            <a href="/2020/03/01/butterflies.html"><img alt="" class="card-img-top"
-                                                                                       src="/assets/files/butterfly_gif.gif"></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="/2020/03/01/butterflies.html">Confusing Lepidopterologists</a>
-                                </h4>
-                                <p class="card-text">Trained a generative adversarial neural network to create new butterflies from historical academic illustrations.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    
-                    <div class="col-lg-4 col-sm-6 portfolio-item">
-                        <div class="card h-100">
-                            <a href="/2020/05/01/comp410.html"><img alt="" class="card-img-top"
-                                                                                       src="/assets/files/comp410.png"></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="/2020/05/01/comp410.html">Project Manager - Schlumberger VR Training System (COMP 410)</a>
-                                </h4>
-                                <p class="card-text">Led a team of 27 students to create a cloud-hosted employee training management platform that serves virtual reality training modules and captures useful trainee analytics. Designed team workflow and worked with client to build a scalable, extensible, & secure system.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    
-                    <div class="col-lg-4 col-sm-6 portfolio-item">
-                        <div class="card h-100">
-                            <a href="/2020/05/01/csgo.html"><img alt="" class="card-img-top"
-                                                                                       src="/assets/files/de_mirage.jpg"></a>
-                            <div class="card-body">
-                                <h4 class="card-title">
-                                    <a href="/2020/05/01/csgo.html">Counter Strike - Global Offensive Data-Driven Stategy Analysis</a>
-                                </h4>
-                                <p class="card-text">Analyzed strategic grenade placement using historical matchmaking data. Created a D3.js scrollable visualization to present findings.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-                <!-- /.row -->
-
-                <!-- Features Section -->
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h2>Career Interests</h2>
-                        <p></p>
-                        <p>My specific interests include:</p>
-                        <ul>
-                            
-                                <li>Machine learning & data science modeling</li>
-                            
-                                <li>Software design and development</li>
-                            
-                                <li>Formal methods for software analysis</li>
-                            
-                                <li>Data platforms and pipelines</li>
-                            
-                                <li>Computer graphics</li>
-                            
+			<p>I'm a Senior at Rice University studying computer science and data science. I have interned with the McNair Center to apply machine learning to economics research, done research on extensions of abstract interpretation at Rice Intelligent Software Systems Lab, and worked with engineers at Aerojet Rocketdyne to produce a liquid fueled rocket. When I'm not working, I enjoy playing Chopin on the piano, tinkering with algorithmic art, or expanding my list of coffeeshop ratings. </p>
+			<p>I am starting at Coinbase next year on the Machine Learning team.</p>
 
 
-                        </ul>
+			<!-- Portfolio Section -->
+			<h2>Here are a few of my works</h2>
 
-                    </div>
-                    <div class="col-lg-6">
-                        <img alt="" class="img-fluid rounded" href="https://www.kdnuggets.com/2017/08/first-steps-learning-deep-learning-image-classification-keras.html"
-                             src="/assets/files/ml_meme.png">
-                    </div>
-                </div>
-                <!-- /.row -->
+			<div class="row">
+				
+				
+				
+				<div class="col-lg-4 col-sm-6 portfolio-item">
+					<div class="card h-100">
+						<a href="/2020/03/01/butterflies.html"><img alt="" class="card-img-top"
+																				   src="/assets/files/butterfly_gif.gif"></a>
+						<div class="card-body">
+							<h4 class="card-title">
+								<a href="/2020/03/01/butterflies.html">Confusing Lepidopterologists</a>
+							</h4>
+							<p class="card-text">Trained a generative adversarial neural network to create new butterflies from historical academic illustrations.</p>
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				<div class="col-lg-4 col-sm-6 portfolio-item">
+					<div class="card h-100">
+						<a href="/2020/05/01/comp410.html"><img alt="" class="card-img-top"
+																				   src="/assets/files/comp410.png"></a>
+						<div class="card-body">
+							<h4 class="card-title">
+								<a href="/2020/05/01/comp410.html">Project Manager - Schlumberger VR Training System (COMP 410)</a>
+							</h4>
+							<p class="card-text">Led a team of 27 students to create a cloud-hosted employee training management platform that serves virtual reality training modules and captures useful trainee analytics. Designed team workflow and worked with client to build a scalable, extensible, & secure system.</p>
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				<div class="col-lg-4 col-sm-6 portfolio-item">
+					<div class="card h-100">
+						<a href="/2020/05/01/csgo.html"><img alt="" class="card-img-top"
+																				   src="/assets/files/de_mirage.jpg"></a>
+						<div class="card-body">
+							<h4 class="card-title">
+								<a href="/2020/05/01/csgo.html">Counter Strike - Global Offensive Data-Driven Stategy Analysis</a>
+							</h4>
+							<p class="card-text">Analyzed strategic grenade placement using historical matchmaking data. Created a D3.js scrollable visualization to present findings.</p>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<!-- /.row -->
 
-                <hr>
+			<!-- Features Section -->
+			<div class="row">
+				<div class="col-lg-6">
+					<h2>Career Interests</h2>
+					<p></p>
+					<p>My specific interests include:</p>
+					<ul>
+						
+							<li>Machine learning & data science modeling</li>
+						
+							<li>Software design and development</li>
+						
+							<li>Formal methods for software analysis</li>
+						
+							<li>Data platforms and pipelines</li>
+						
+							<li>Computer graphics</li>
+						
 
-                <!-- Call to Action Section -->
-                <div class="row mb-4">
-                    <div class="col-md-2">
-                        <p>Get in Touch!</p>
-                    </div>
-                    <div class="col-md-4">
-                        <a class="btn btn-lg btn-secondary btn-block" href="mailto:kyran.park.adams@gmail.com">Email</a>
-                    </div>
-                    <div class="col-md-4">
-                        <a class="btn btn-lg btn-secondary btn-block" href="/assets/files/resume.pdf">Resume</a>
-                    </div>
-                </div>
 
-            </div>
-        </div>
-    </div>
+					</ul>
+
+				</div>
+				<div class="col-lg-6">
+					<img alt="" class="img-fluid rounded" href="https://www.kdnuggets.com/2017/08/first-steps-learning-deep-learning-image-classification-keras.html"
+						 src="/assets/files/ml_meme.png">
+				</div>
+			</div>
+			<!-- /.row -->
+
+			<hr>
+
+			<!-- Call to Action Section -->
+			<div class="row mb-4">
+				<div class="col-md-2">
+					<p>Get in Touch!</p>
+				</div>
+				<div class="col-md-4">
+					<a class="btn btn-lg btn-secondary btn-block" href="mailto:kyran.park.adams@gmail.com">Email</a>
+				</div>
+				<div class="col-md-4">
+					<a class="btn btn-lg btn-secondary btn-block" href="/assets/files/resume.pdf">Resume</a>
+				</div>
+			</div>
+
+		</div>
+	</div>    
 </div>
 
 <!-- Page Content -->

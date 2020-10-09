@@ -4,55 +4,50 @@
 
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-2 no-float bg-primary">
-            {% include sidebar.html %}
-        </div>
-        <div class="col-md-10 no-float">
-            <div class="container">
-                <!-- Navigation -->
-                {% include navigation.html %}
+	{% include header.html %}
+	<div class="col-md-12 no-float">
+		{% include navigation.html %}
+		<div class="container">
 
-                <!-- Page Heading/Breadcrumbs -->
-                <h1 class="mt-4 mb-3">Skills
-                </h1>
-                {% assign n = 0 %}
-                {% for item in page.skills %}
-                    <h2 class=""><small>{{item[0] | capitalize}}</small></h2>
-                    <ul>
-                     {% for name in item[1] %}
-                        <li>
-                            <div id="popover_content_wrapper_{{n}}" style="display: none;">
-                                {% assign j = 0 %}
-                                {% for post in site.posts %}
-                                    {% if post.tags contains name %}
-                                        <p><a href="{{post.url}}">{{post.title}}</a>
-                                        <p><small>
-                                            {% for tag in post.tags %}
-                                            #{{tag}}
-                                            {% endfor %}
-                                        </small></p>
+			<!-- Page Heading/Breadcrumbs -->
+			<h1 class="mt-4 mb-3">Skills
+			</h1>
+			{% assign n = 0 %}
+			{% for item in page.skills %}
+				<h2 class=""><small>{{item[0] | capitalize}}</small></h2>
+				<ul>
+				 {% for name in item[1] %}
+					<li>
+						<div id="popover_content_wrapper_{{n}}" style="display: none;">
+							{% assign j = 0 %}
+							{% for post in site.posts %}
+								{% if post.tags contains name %}
+									<p><a href="{{post.url}}">{{post.title}}</a>
+									<p><small>
+										{% for tag in post.tags %}
+										#{{tag}}
+										{% endfor %}
+									</small></p>
 
-                                        <img alt="" class="img-fluid rounded" src="{{ post.preview_image }}">
-                                        <hr>
-                                        {% assign j = j | plus: 1 %}
-                                    {% endif %}
-                                {% endfor %}
-                                {% if j == 0 %}
-                                <p>None found!</p>
-                                {% endif %}
-                            </div>
+									<img alt="" class="img-fluid rounded" src="{{ post.preview_image }}">
+									<hr>
+									{% assign j = j | plus: 1 %}
+								{% endif %}
+							{% endfor %}
+							{% if j == 0 %}
+							<p>None found!</p>
+							{% endif %}
+						</div>
 
-                            <a id='popover-{{n}}' tabindex="0" role="button" data-placement='right' title="Projects using {{name}}" data-trigger="focus" href='#!'>{{name}}  [{{j}} posts]</a>
-                            {% assign n = n | plus: 1 %}
-                        </li>
-                     {% endfor %}
-                    </ul>
-                {% endfor %}
+						<a id='popover-{{n}}' tabindex="0" role="button" data-placement='right' title="Projects using {{name}}" data-trigger="focus" href='#!'>{{name}}  [{{j}} posts]</a>
+						{% assign n = n | plus: 1 %}
+					</li>
+				 {% endfor %}
+				</ul>
+			{% endfor %}
 
-            </div>
-        </div>
-    </div>
+		</div>
+	</div>
 </div>
 <!-- /.container -->
 
