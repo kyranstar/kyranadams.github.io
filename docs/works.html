@@ -207,15 +207,13 @@ function generateColor(colorStart,colorEnd,colorCount){
 }
 
 
-$(window).on('load', function() {
-	var titleheight = $(window).width()/20;
-	$('#nametitle').css({
-		//top: $('#mountains').offset().top + $('#mountains').height() - titleheight - 10,
-		top: $('#mountains').offset().top + 10,
-		left: "50%", 
-		fontSize: titleheight
-	})
-});
+var titleheight = $(window).width()/20;
+$('#nametitle').css({
+	//top: $('#mountains').offset().top + $('#mountains').height() - titleheight - 10,
+	top: $('#mountains').offset().top + 10,
+	left: "50%", 
+	fontSize: titleheight
+})
 
 var sunGradient = generateColor('#7A2C3F','#FF7451',20);
 $('#suncircle').attr('r', $(window).width()/24)
