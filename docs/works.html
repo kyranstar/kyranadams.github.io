@@ -53,16 +53,23 @@
 }
 .parallax {
 	position: fixed;
-	top: 80px;
+	top: 90px;
 	z-index: 2;
 	left: 50%;
 }
 #nametitle {
 	position: absolute;
 	color: white;
-	font-family: 'Helvetica Neue', sans-serif; font-size: 50px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
+	font-family: 'Lato', sans-serif; font-size: 54px; font-weight: 300; line-height: 58px; margin: 0 0 58px; letter-spacing: 5px;
+	text-align: center;
 	z-index: 4;
 	transform: translate(-50%, 0%);
+	border: solid white 2px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 10px;
+	padding-top: 5px;
+	white-space: nowrap;
 }
 
 
@@ -154,9 +161,9 @@ $('#nametitle').css({
 	fontSize: titleheight
 })
 
-var sunGradient = generateColor('#7A2C3F','#FF7451',20);
-$('#suncircle').attr('r', $(window).width()/24)
-$('#suncircle').attr('cy', $(window).width()/24)
+var sunGradient = generateColor('#87192B','#FF7451',20);
+$('#suncircle').attr('r', $(window).width()/36)
+$('#suncircle').attr('cy', $(window).width()/36)
 $('#suncircle').attr('cx', $(window).width()/9)
 $('#suncircle').css({fill: sunGradient[0]})
 
@@ -174,7 +181,7 @@ $.fn.followTo = function (target) {
 			colInd = 0;
 		}
 		var fillCol = sunGradient[colInd];
-		var yDist = 80
+		var yDist = 90
 		
         if ($window.scrollTop() + yDist > pos) {
             $this.css({
